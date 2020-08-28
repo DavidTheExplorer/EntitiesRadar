@@ -72,7 +72,7 @@ public class NearbyEntitiesCommand implements CommandExecutor
 
 		if(!radiusHolder.isPresent())
 		{
-			player.sendMessage(ChatColor.RED + args[0] + " is an ridiculously high radius and untreatable.");
+			player.sendMessage(ChatColor.RED + "FAILED: " + args[0] + " is a ridiculously high radius which would " + getBold(ChatColor.RED) + "crash" + ChatColor.RED + " the server.");
 			return false;
 		}
 		int radius = radiusHolder.get();
@@ -153,8 +153,8 @@ public class NearbyEntitiesCommand implements CommandExecutor
 			}
 		}
 		
-		//Send the scan data to the player
-		player.sendMessage(createScanTitle("Mobs", radius));
+		//Send the scan's data to the player
+		player.sendMessage(createReportTitle("Mobs", radius));
 
 		//display the mobs amounts
 		typesAmounts.forEach((entityType, amount) -> player.sendMessage(" " + ChatColor.GREEN + getDisplayName(entityType) + ChatColor.GRAY + ": " + getAmountColor(amount) + amount));
@@ -249,9 +249,9 @@ public class NearbyEntitiesCommand implements CommandExecutor
 		}
 		return displayName.append(')').toString();
 	}
-	private static String createScanTitle(String title, int radius) 
+	private static String createReportTitle(String title, int radius) 
 	{
-		return ChatColor.GREEN + "*-" + getBold(ChatColor.GOLD) + "⇩" + ChatColor.GREEN + "-* Nearby " + title + " Scan " + ChatColor.YELLOW + "(" + ChatColor.GOLD + "Radius: " + radius + ChatColor.YELLOW + ")" + ChatColor.GREEN + " *-" + getBold(ChatColor.GOLD) + "⇩" + ChatColor.GREEN + "-*";
+		return ChatColor.GREEN + "*-" + getBold(ChatColor.GOLD) + "⇩" + ChatColor.GREEN + "-* Nearby " + title + " Report " + ChatColor.YELLOW + "(" + ChatColor.GOLD + "Radius: " + radius + ChatColor.YELLOW + ")" + ChatColor.GREEN + " *-" + getBold(ChatColor.GOLD) + "⇩" + ChatColor.GREEN + "-*";
 	}
 	private void cleanWaitingList(boolean notifyOnlineWaiting)
 	{
