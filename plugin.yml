@@ -1,0 +1,7 @@
+name: EntitesRadar
+main: me.entitiesradar.EntitiesRadar
+version: 1.0
+description: Gets data about players' nearby entities.
+commands:
+    nearbyentities:
+        description: Sends data about your nearby entities.
